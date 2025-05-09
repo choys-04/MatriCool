@@ -1,0 +1,17 @@
+/mi-proyecto-web
+│── /src
+│    │── /components      # Contiene los Web Components
+│    │    │── header.js   # Componente de encabezado
+│    │    │── footer.js   # Componente de pie de página
+│    │── /styles         # Contiene los archivos de estilos
+│    │    │── main.css   # Archivo principal de estilos
+│    │── /utils          # Scripts auxiliares
+│    │    │── helpers.js # Funciones de ayuda
+│    │── index.js        # Punto de entrada de la aplicación
+│── /public
+│    │── index.html      # Archivo HTML principal
+│    │── /assets         # Contiene imágenes, íconos y otros recursos
+│── /tests
+│    │── components.test.js # Pruebas de los Web Components
+│── package.json         # Archivo de configuración del proyecto
+│── README.md            # Documentación del proyecto
