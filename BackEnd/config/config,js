@@ -1,0 +1,12 @@
+require('dotenv').config();
+
+module.exports = {
+    username: process.env.DB_USERNAME || 'MatriCoolAdminDB',
+    password: process.env.DB_PASSWORD || 'P0pul4r20s5',
+    database: process.env.DB_NAME || 'MatriCoolDB',
+    host: process.env.DB_HOST || '127.0.0.1',
+    port: process.env.DB_PORT || 3306,
+    dialect: process.env.DB_DIALECT || 'mariadb',
+    logging: false,
+    TOKEN_KEY: process.env.TOKEN_KEY || 'n0t3d1g0'
+}
