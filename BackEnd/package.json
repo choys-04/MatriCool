@@ -4,7 +4,11 @@
   "description": "backend",
   "main": "index.js",
   "scripts": {
-    "start": "node --watch app.js"
+    "start": "node --watch app.js",
+    "migrate": "npx sequelize-cli db:migrate", 
+    "umigrate": "npx sequelize-cli db:migrate:undo:all", 
+    "seed": "npx sequelize-cli db:seed:all", 
+    "useed": "npx sequelize-cli db:seed:undo:all"
   },
   "type": "commonjs",
   "author": "joyce mora vargas",
