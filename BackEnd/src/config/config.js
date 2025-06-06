@@ -1,25 +1,9 @@
-require('dotenv').config();
-
 module.exports = {
-  "development": {
-    "username": "MatriCoolAdminDB",
-    "password": "P0pul4r20s5",
-    "database": "MatriCoolDB", 
-    "host": "127.0.0.1",
-    "dialect": "mariadb"
-  },
-  "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
-  "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  }
-}
+  username: process.env.DB_USER || "root",
+  password: process.env.DB_PASS || "123456",
+  database: process.env.DB_DATABASE || "dbPrueba",
+  host: process.env.DB_HOST || "127.0.0.1",
+  dialect: process.env.DB_DIALECT || "mariadb",
+  port: process.env.DB_PORT || "3306",
+  aport: process.env.DB_APORT || "4321",
+};

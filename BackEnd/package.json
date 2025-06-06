@@ -1,20 +1,21 @@
 {
-  "name": "matricoolbe",
+  "description": "Backend basico",
+  "name": "backendbasic",
   "version": "1.0.0",
-  "description": "backend",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node --watch app.js",
-    "migrate": "npx sequelize-cli db:migrate", 
-    "umigrate": "npx sequelize-cli db:migrate:undo:all", 
-    "seed": "npx sequelize-cli db:seed:all", 
+    "start": "node --watch server.js",
+    "migrate": "npx sequelize-cli db:migrate",
+    "umigrate": "npx sequelize-cli db:migrate:undo:all",
+    "seed": "npx sequelize-cli db:seed:all",
     "useed": "npx sequelize-cli db:seed:undo:all"
   },
-  "type": "commonjs",
-  "author": "joyce mora vargas",
+  "keywords": [
+    "beb"
+  ],
+  "author": "IFV",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "mariadb": "^3.4.2",
     "sequelize": "^6.37.7",
