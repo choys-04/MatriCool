@@ -14,6 +14,14 @@ module.exports = (sequelize, DataTypes) => {
         as: "asistencia",
         foreignKey: "horarios",
       });
+      User.belongsTo(models.profesorIdId, {
+        as: "asistencia",
+        foreignKey: "profesorId",
+      });
+      User.belongsTo(models.materiaIdId, {
+        as: "asistencia",
+        foreignKey: "materiaId",
+      });
     }
   }
   presencialidad.init({
