@@ -16,15 +16,19 @@ module.exports = {
         type: Sequelize.TEXT
       },
       tipo: {
-        type: Sequelize.ENUM
+        type: Sequelize.ENUM("INTEGER", "STRING", "BOOLEAN"),
+        allowNull: false,
+        defaultValue: "STRING"
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
       }
     });
   },

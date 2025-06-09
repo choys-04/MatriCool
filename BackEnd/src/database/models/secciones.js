@@ -5,11 +5,11 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class secciones extends Model {
     static associate(models) {
-     secciones.hasMany(models.seccionalumnos, {
+     secciones.hasMany(models.seccionAlumnos, {
         as: "seccion",
         foreignKey: "seccionId",
       });
-      secciones.hasOne(models.user, {
+      secciones.hasOne(models.User, {
         as: "profesor",
         foreignKey: "profesorId",
       });

@@ -16,7 +16,11 @@ module.exports = (sequelize, DataTypes) => {
   config.init({
     clave: DataTypes.STRING,
     valor: DataTypes.TEXT,
-    tipo: DataTypes.ENUM
+    tipo: { 
+        type: DataTypes.ENUM("INTEGER", "STRING", "BOOLEAN"), 
+        allowNull: false, 
+        defaultValue: "STRING"
+    }
   }, {
     sequelize,
     modelName: 'config',

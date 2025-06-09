@@ -10,15 +10,15 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-     notas.hasOne(models.user, {
+     notas.hasOne(models.User, {
         as: "alumno",
         foreignKey: "alumnoId",
       });
-       notas.hasOne(models.materias, {
+       notas.hasMany(models.materias, {
         as: "materia",
         foreignKey: "materiaId",
       });
-     notas.hasOne(models.user, {
+     notas.hasOne(models.User, {
         as: "usuario",
         foreignKey: "usuarioId",
       });

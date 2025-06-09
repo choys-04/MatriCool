@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         as: "seccion",
         foreignKey: "seccionId",
       });
-      seccionAlumnos.belongsToMany(models.user, {
+      seccionAlumnos.belongsTo(models.User, {
         as: "alumnos",
         foreignKey: "alumnoId",
       });

@@ -5,25 +5,13 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class horarios extends Model {
     static associate(models) {
-     User.belongsTo(models.seccionIdd, {
+      horarios.belongsTo(models.secciones, {
         as: "seccion",
         foreignKey: "seccionId",
       });
-      User.belongsTo(models.profesorIdId, {
+      horarios.belongsTo(models.User, {
         as: "profesor",
         foreignKey: "profesorId",
-      });
-       User.belongsTo(models.alumnoId, {
-        as: "dia",
-        foreignKey: "diaId",
-      });
-       User.belongsTo(models.alumnoId, {
-        as: "inicio",
-        foreignKey: "inicioId",
-      });
-       User.belongsTo(models.alumnoId, {
-        as: "final",
-        foreignKey: "finald",
       });
     }
   }
