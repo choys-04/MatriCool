@@ -1,8 +1,8 @@
-const { seccionalumnos } = require("../database/models/index");
+const { materiasprofesor } = require("../database/models/index");
 
 const getAll = async (req, res) => {
   try {
-    let data = await seccionalumnos.findAll({
+    let data = await materiasprofesor.findAll({
       attributes: { exclude: ["id"] },
     });
     res.json(data);
@@ -19,7 +19,7 @@ const getById = async (req, res) => {
   try {
     const { id } = req.query; 
     console.log(id)
-    let data = await seccionalumnos.findOne({
+    let data = await materiasprofesor.findOne({
       where: {id:id},
       attributes: {
         exclude: ["id" ],
@@ -34,10 +34,10 @@ const getById = async (req, res) => {
   }
 };
 
-const createS = async (req, res) => {
+const createMP = async (req, res) => {
   try {
     const { data } = req.body;
-    let result = await seccionalumnos.create(data, {
+    let result = await materiasprofesor.create(data, {
       attributes: { exclude: ["createdAt", "updatedAt"] },
     });
     res.json(result);
@@ -50,10 +50,10 @@ const createS = async (req, res) => {
   }
 };
 
-const updateS = async (req, res) => {
+const updateMP = async (req, res) => {
   try {
     const { id, ...data } = req.body.data;
-    let result = await seccionalumnos.update(data, {
+    let result = await mensajesprofesor.update(data, {
       where: { id:id },
     });
     res.json(result);
@@ -65,14 +65,14 @@ const updateS = async (req, res) => {
     });
   }
 };
-let validateS=0
-let deleteS=0
+let validateMP=0
+let deleteMP=0
 
 module.exports = {
   getAll,
   getById,
-  createS,
-  updateS,
-  validateS,
-  deleteS,
+  createMP,
+  updateMP,
+  validateMP,
+  deleteMP,
 };
