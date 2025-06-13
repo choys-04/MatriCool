@@ -21,6 +21,10 @@ module.exports = {
       fechaFinal: {
         type: Sequelize.DATE
       },
+       active: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: true
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

@@ -9,7 +9,7 @@ const getAll = async (req, res) => {
   } catch (error) {
     res.json({
       message: "No fue posible obtener la informacion",
-      mjsError: error, 
+      mjsError: error,
       res: false,
     });
   }
@@ -17,12 +17,12 @@ const getAll = async (req, res) => {
 
 const getById = async (req, res) => {
   try {
-    const { id } = req.query; 
+    const { id } = req.query;
     console.log(id)
     let data = await materias.findOne({
-      where: {id:id},
+      where: { id: id },
       attributes: {
-        exclude: ["id" ],
+        exclude: ["id"],
       },
     });
     res.json(data);
@@ -54,7 +54,7 @@ const updateM = async (req, res) => {
   try {
     const { id, ...data } = req.body.data;
     let result = await mensajes.update(data, {
-      where: { id:id },
+      where: { id: id },
     });
     res.json(result);
   } catch (error) {
@@ -65,14 +65,28 @@ const updateM = async (req, res) => {
     });
   }
 };
-let validateM=0
-let deleteM=0
+
+const deleteM = async (req, res) => {
+  try {
+    const { id } = req.body;
+    let result = await materias.update({ active: false }, {
+      where: { id: id },
+      attributes: ["active"],
+    });
+    res.json(result);
+  } catch (error) {
+    res.json({
+      message: "No fue posible obtener la informacion",
+      cause: error,
+      res: false,
+    });
+  }
+};
 
 module.exports = {
   getAll,
   getById,
   createM,
   updateM,
-  validateM,
   deleteM,
 };

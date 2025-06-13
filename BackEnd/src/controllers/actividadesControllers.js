@@ -9,7 +9,7 @@ const getAll = async (req, res) => {
   } catch (error) {
     res.json({
       message: "No fue posible obtener la informacion",
-      mjsError: error, 
+      mjsError: error,
       res: false,
     });
   }
@@ -17,12 +17,12 @@ const getAll = async (req, res) => {
 
 const getById = async (req, res) => {
   try {
-    const { id } = req.query; 
+    const { id } = req.query;
     console.log(id)
     let data = await actividades.findOne({
-      where: {id:id},
+      where: { id: id },
       attributes: {
-        exclude: ["id" ],
+        exclude: ["id"],
       },
     });
     res.json(data);
@@ -36,7 +36,8 @@ const getById = async (req, res) => {
 
 const createA = async (req, res) => {
   try {
-    const { data } = req.body;
+    const  data  = req.body;
+    console.log(data)
     let result = await actividades.create(data, {
       attributes: { exclude: ["createdAt", "updatedAt"] },
     });
@@ -54,7 +55,7 @@ const updateA = async (req, res) => {
   try {
     const { id, ...data } = req.body.data;
     let result = await actividades.update(data, {
-      where: { id:id },
+      where: { id: id },
     });
     res.json(result);
   } catch (error) {
@@ -64,15 +65,32 @@ const updateA = async (req, res) => {
       res: false,
     });
   }
+
 };
-let validateA=0
-let deleteA=0
+
+const deleteA = async (req, res) => {
+  try {
+    const { id } = req.body;
+    let result = await actividades.update({ active: false }, {
+      where: { id: id },
+      attributes: ["active"],
+    });
+    res.json(result);
+  } catch (error) {
+    res.json({
+      message: "No fue posible obtener la informacion",
+      cause: error,
+      res: false,
+    });
+  }
+};
+
+
 
 module.exports = {
   getAll,
   getById,
   createA,
   updateA,
-  validateA,
   deleteA,
 };

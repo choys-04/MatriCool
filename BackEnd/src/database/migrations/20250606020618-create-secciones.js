@@ -15,6 +15,10 @@ module.exports = {
       profesorId: {
         type: Sequelize.INTEGER
       },
+        active: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: true
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

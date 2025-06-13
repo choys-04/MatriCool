@@ -18,7 +18,6 @@ const getAll = async (req, res) => {
 const getById = async (req, res) => {
   try {
     const { id } = req.query; 
-    console.log(id)
     let data = await encargadoalumnos.findOne({
       where: {id:id},
       attributes: {

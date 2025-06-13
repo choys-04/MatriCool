@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     descripcion: DataTypes.TEXT,
     fechaInicio: DataTypes.DATE,
-    fechaFinal: DataTypes.DATE
+    fechaFinal: DataTypes.DATE,
+    active: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'actividades',
