@@ -5,11 +5,11 @@ const getAll = async (req, res) => {
     let data = await roles.findAll({
       attributes: { exclude: ["id"] },
     });
-    res.json(data);
+    res.status(200).json(data);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
-      mjsError: error, 
+      mjsError: error,
       res: false,
     });
   }
@@ -17,17 +17,16 @@ const getAll = async (req, res) => {
 
 const getById = async (req, res) => {
   try {
-    const { id } = req.query; 
-    console.log(id)
+    const { id } = req.query;
     let data = await roles.findOne({
-      where: {id:id},
+      where: { id: id },
       attributes: {
-        exclude: ["id" ],
+        exclude: ["id"],
       },
     });
-    res.json(data);
+    res.status(200).json(data);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       res: false,
     });
@@ -40,9 +39,9 @@ const createR = async (req, res) => {
     let result = await roles.create(data, {
       attributes: { exclude: ["createdAt", "updatedAt"] },
     });
-    res.json(result);
+    res.status(200).json(result);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       causa: error,
       res: false,
@@ -54,25 +53,40 @@ const updateR = async (req, res) => {
   try {
     const { id, ...data } = req.body.data;
     let result = await roles.update(data, {
-      where: { id:id },
+      where: { id: id },
     });
-    res.json(result);
+    res.status(200).json(result);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       causa: error,
       res: false,
     });
   }
 };
-let validateR=0
-let deleteR=0
+
+const deleteR = async (req, res) => {
+  try {
+    const { id } = req.body.data;
+    let role = await roles.findById(id);
+    if (!role) {
+      return res.status(400).json({msj:'id no existe.'});
+    }
+    let result = await role.destroy(id);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(400).json({
+      message: "No fue posible obtener la informacion",
+      causa: error,
+      res: false,
+    });
+  }
+};
 
 module.exports = {
   getAll,
   getById,
   createR,
   updateR,
-  validateR,
   deleteR,
 };

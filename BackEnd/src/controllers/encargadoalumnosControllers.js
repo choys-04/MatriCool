@@ -5,9 +5,9 @@ const getAll = async (req, res) => {
     let data = await encargadoalumnos.findAll({
       attributes: { exclude: ["id"] },
     });
-    res.json(data);
+    res.status(200).json(data);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       mjsError: error, 
       res: false,
@@ -24,9 +24,9 @@ const getById = async (req, res) => {
         exclude: ["id" ],
       },
     });
-    res.json(data);
+    res.status(200).json(data);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       res: false,
     });
@@ -39,9 +39,9 @@ const createE = async (req, res) => {
     let result = await encargadoalumnos.create(data, {
       attributes: { exclude: ["createdAt", "updatedAt"] },
     });
-    res.json(result);
+    res.status(201).json(result);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       causa: error,
       res: false,
@@ -55,9 +55,9 @@ const updateE = async (req, res) => {
     let result = await encargadoalumnos.update(data, {
       where: { id:id },
     });
-    res.json(result);
+    res.status(200).json(result);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       causa: error,
       res: false,

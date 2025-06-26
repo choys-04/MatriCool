@@ -5,11 +5,11 @@ const getAll = async (req, res) => {
     let data = await mensajes.findAll({
       attributes: { exclude: ["id"] },
     });
-    res.json(data);
+    res.status(200).json(data);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
-      mjsError: error, 
+      mjsError: error,
       res: false,
     });
   }
@@ -17,17 +17,16 @@ const getAll = async (req, res) => {
 
 const getById = async (req, res) => {
   try {
-    const { id } = req.query; 
-    console.log(id)
+    const { id } = req.query;
     let data = await mensajes.findOne({
-      where: {id:id},
+      where: { id: id },
       attributes: {
-        exclude: ["id" ],
+        exclude: ["id"],
       },
     });
-    res.json(data);
+    res.status(200).json(data);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       res: false,
     });
@@ -40,9 +39,9 @@ const createME = async (req, res) => {
     let result = await mensajes.create(data, {
       attributes: { exclude: ["createdAt", "updatedAt"] },
     });
-    res.json(result);
+    res.status(201).json(result);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       causa: error,
       res: false,
@@ -54,25 +53,57 @@ const updateME = async (req, res) => {
   try {
     const { id, ...data } = req.body.data;
     let result = await mensajes.update(data, {
-      where: { id:id },
+      where: { id: id },
     });
-    res.json(result);
+    res.status(200).json(result);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       causa: error,
       res: false,
     });
   }
 };
-let validateME=0
-let deleteME=0
+
+const readedME = async (req, res) => {
+  try {
+    const { id, ...data } = req.body.data;
+    let result = await mensajes.update(data, {
+      where: { id: id },
+    });
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(400).json({
+      message: "No fue posible obtener la informacion",
+      causa: error,
+      res: false,
+    });
+  }
+};
+
+const deleteME = async (req, res) => {
+  try {
+    const { id } = req.body.data;
+    const mensaje = await mensajes.findByPk(id);
+    if (!mensaje) {
+      return res.status(404).send("No existe.");
+    }
+    let result = await mensaje.destroy();
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(400).json({
+      message: "No fue posible obtener la informacion",
+      causa: error,
+      res: false,
+    });
+  }
+};
 
 module.exports = {
   getAll,
   getById,
   createME,
   updateME,
-  validateME,
+  readedME,
   deleteME,
 };

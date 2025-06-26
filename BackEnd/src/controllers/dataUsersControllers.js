@@ -13,9 +13,9 @@ const getAll = async (req, res) => {
         },
       ],
     });
-    res.json(dataUsers);
+    res.status(200).json(dataUsers);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       res: false,
     });
@@ -24,10 +24,9 @@ const getAll = async (req, res) => {
 
 const getById = async (req, res) => {
   try {
-    const { userId } = req.query;
-    console.log(req.query);
+    const { id } = req.query;
     let dataUsers = await dataUser.findOne({
-      where: data,
+      where: id,
       attributes: { exclude: ["userId", "createdAt", "updatedAt"] },
       include: [
         {
@@ -37,9 +36,9 @@ const getById = async (req, res) => {
         },
       ],
     });
-    res.json(dataUsers);
+    res.status(200).json(dataUsers);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       res: false,
     });
@@ -48,14 +47,13 @@ const getById = async (req, res) => {
 
 const createD = async (req, res) => {
   try {
-    console.log(req.body);
     const { data } = req.body;
     let resp = await dataUser.create(data, {
       attributes: { exclude: ["createdAt", "updatedAt"] },
     });
-    res.json(resp);
+    res.status(201).json(resp);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       causa: error,
       res: false,
@@ -69,9 +67,9 @@ const updateD = async (req, res) => {
     let resp = await dataUser.update(data, {
       where: { id: userId }
     });
-    res.json(resp);
+    res.status(200).json(resp);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       causa: error,
       res: false,

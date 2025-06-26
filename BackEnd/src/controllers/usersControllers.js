@@ -39,9 +39,9 @@ const getById = async (req, res) => {
         },
       ],
     });
-    res.json(users);
+    res.status(200).json(users);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       res: false,
     });
@@ -54,9 +54,9 @@ const createU = async (req, res) => {
     let users = await User.create(user, {
       attributes: { exclude: ["createdAt", "updatedAt"] },
     });
-    res.json(users);
+    res.status(201).json(users);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       causa: error,
       res: false,
@@ -70,9 +70,9 @@ const updateU = async (req, res) => {
     let users = await User.update(user, {
       where: { id: user.id },
     });
-    res.json(users);
+    res.status(200).json(users);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       causa: error,
       res: false,
@@ -87,9 +87,9 @@ const validateU = async (req, res) => {
       where: { id: user.id },
       fields: ["active"],
     });
-    res.json(users);
+    res.status(200).json(users);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       causa: error,
       res: false,
@@ -104,9 +104,9 @@ const deleteU = async (req, res) => {
       where: { id: user.id },
       attributes: ["active"],
     });
-    res.json(users);
+    res.status(200).json(users);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       cause: error,
       res: false,

@@ -5,9 +5,9 @@ const getAll = async (req, res) => {
     let data = await horarios.findAll({
       attributes: { exclude: ["id"] },
     });
-    res.json(data);
+    res.status(200).json(data);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       mjsError: error, 
       res: false,
@@ -18,16 +18,15 @@ const getAll = async (req, res) => {
 const getById = async (req, res) => {
   try {
     const { id } = req.query; 
-    console.log(id)
     let data = await horarios.findOne({
       where: {id:id},
       attributes: {
         exclude: ["id" ],
       },
     });
-    res.json(data);
+    res.status(200).json(data);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       res: false,
     });
@@ -40,9 +39,9 @@ const createH = async (req, res) => {
     let result = await horarios.create(data, {
       attributes: { exclude: ["createdAt", "updatedAt"] },
     });
-    res.json(result);
+    res.status(201).json(result);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       causa: error,
       res: false,
@@ -56,23 +55,19 @@ const updateH = async (req, res) => {
     let result = await horarios.update(data, {
       where: { id:id },
     });
-    res.json(result);
+    res.status(200).json(result);
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "No fue posible obtener la informacion",
       causa: error,
       res: false,
     });
   }
 };
-let validateH=0
-let deleteH=0
 
 module.exports = {
   getAll,
   getById,
   createH,
-  updateH,
-  validateH,
-  deleteH,
+  updateH
 };
