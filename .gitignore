@@ -1,5 +1,6 @@
 .env
-node_modules/
-config.js
+BackEnd/node_modules/
+BackEnd/src/config/config.js
+BackEnd/src/config/config2.js
 package-lock.json
 !.gitignore
