@@ -10,18 +10,13 @@ module.exports = {
       fechaFinal: "2024-9-15"
     }, {
       name: 'dia de la madre',
-      descripcion: "cafe con papas",
+      descripcion: "cafe con mamas",
       fechaInicio: "2024-6-17",
       fechaFinal: "2024-7-17"
     }], {});
   },
 
   async down(queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+     await queryInterface.bulkDelete('People', null, {});
   }
 };

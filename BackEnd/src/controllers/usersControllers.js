@@ -5,13 +5,6 @@ const getAll = async (req, res) => {
   try {
     let users = await User.findAll({
       attributes: { exclude: ["userId", "createdAt", "updatedAt"] },
-      include: [
-        {
-          model: dataUser,
-          attributes: { exclude: ["createdAt", "updatedAt"] },
-          as: "Datos",
-        },
-      ],
     });
     console.log(users);
     res.json(users);
@@ -31,13 +24,6 @@ const getById = async (req, res) => {
       attributes: {
         exclude: ["userId", "createdAt", "updatedAt"],
       },
-      include: [
-        {
-          model: dataUser,
-          attributes: { exclude: ["id", "userId", "createdAt", "updatedAt"] },
-          as: "datosPersonales",
-        },
-      ],
     });
     res.status(200).json(users);
   } catch (error) {

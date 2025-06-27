@@ -5,7 +5,7 @@ const { listaTodo, buscarId, crear, actualizar, validar, eliminar} = requere("..
 const getAll = async (req, res) => {
   let result;
   try {
-    result = await listaTodo([User, dataUser]);
+    result = await listaTodo(User);
     res.status(200).json(result);
   } catch (error) {
     res.status(400).json(result);
@@ -17,7 +17,7 @@ const getById = async (req, res) => {
   try {
     const { userId } = req.query;
     let data = {id:userId};
-    result = await buscarId([User, dataUser], data)
+    result = await buscarId(User, data)
     res.status(200).json(result);
   } catch (error) {
     res.status(400).json(result);

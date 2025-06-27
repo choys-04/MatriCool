@@ -4,19 +4,14 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class seccionProfesor extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      seccionProfesor.belongsTo(models.secciones, {
+      seccionProfesor.belongsTo(models.Secciones, {
         as: "seccion",
         foreignKey: "seccionId",
       });
-       seccionProfesor.belongsTo(models.User, {
+       seccionProfesor.belongsTo(models.Users, {
         as: "profesor",
-        foreignKey: "seccionprofesorId",
+        foreignKey: "profesorId",
       });
     }
   }

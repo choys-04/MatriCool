@@ -3,12 +3,12 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class mensajes extends Model {
+  class Mensajes extends Model {
     static associate(models) {
       // define association here
     }
   }
-  mensajes.init({
+  Mensajes.init({
     asunto: DataTypes.STRING,
     mensaje: DataTypes.TEXT,
     emisorId: DataTypes.INTEGER,
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     fechaEnvio: DataTypes.DATE
   }, {
     sequelize,
-    modelName: 'mensajes',
+    modelName: 'Mensajes',
   });
-  return mensajes;
+  return Mensajes;
 };

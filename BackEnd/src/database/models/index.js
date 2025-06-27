@@ -6,7 +6,7 @@ const Sequelize = require("sequelize");
 const basename = path.basename(__filename);
 
 //Archivo de configuracion
-const config = require("../../config/config.js")
+const config = require("../../config/config2.js")
 
 //objeto db
 const db = {};

@@ -3,17 +3,11 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class config extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+  class Config extends Model {
     static associate(models) {
-      // define association here
     }
   }
-  config.init({
+  Config.init({
     clave: DataTypes.STRING,
     valor: DataTypes.TEXT,
     tipo: { 
@@ -23,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'config',
+    modelName: 'Config',
   });
-  return config;
+  return Config;
 };

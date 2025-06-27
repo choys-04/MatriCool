@@ -6,11 +6,11 @@ module.exports = (sequelize, DataTypes) => {
   class seccionAlumnos extends Model {
     
     static associate(models) {
-      seccionAlumnos.belongsTo(models.secciones, {
+      seccionAlumnos.belongsTo(models.Secciones, {
         as: "seccion",
         foreignKey: "seccionId",
       });
-      seccionAlumnos.belongsTo(models.User, {
+      seccionAlumnos.belongsTo(models.Users, {
         as: "alumnos",
         foreignKey: "alumnoId",
       });

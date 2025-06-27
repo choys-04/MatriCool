@@ -3,19 +3,19 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class horarios extends Model {
+  class Horarios extends Model {
     static associate(models) {
-      horarios.belongsTo(models.secciones, {
+      Horarios.belongsTo(models.Secciones, {
         as: "seccion",
         foreignKey: "seccionId",
       });
-      horarios.belongsTo(models.User, {
+      Horarios.belongsTo(models.Users, {
         as: "profesor",
         foreignKey: "profesorId",
       });
     }
   }
-  horarios.init({
+  Horarios.init({
     seccionId: DataTypes.INTEGER,
     profesorId: DataTypes.INTEGER,
     dia: DataTypes.STRING,
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     final: DataTypes.TIME
   }, {
     sequelize,
-    modelName: 'horarios',
+    modelName: 'Horarios',
   });
-  return horarios;
+  return Horarios;
 };

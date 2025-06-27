@@ -3,25 +3,25 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class materias extends Model {
+  class Materias extends Model {
    static associate(models) {
-     materias.hasMany(models.materiaProfesor, {
+     Materias.hasMany(models.materiaProfesores, {
         as: "materia",
         foreignKey: "materiaId",
       });
 
-       materias.belongsTo(models.notas, {
+     Materias.belongsTo(models.Notas, {
         as: "notas",
         foreignKey: "notaId",
       });
     }
   }
-  materias.init({
+  Materias.init({
     name: DataTypes.STRING,
     description: DataTypes.TEXT
   }, {
     sequelize,
-    modelName: 'materias',
+    modelName: 'Materias',
   });
-  return materias;
+  return Materias;
 };

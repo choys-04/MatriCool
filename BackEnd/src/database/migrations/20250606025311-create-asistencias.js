@@ -2,42 +2,35 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('dataUsers', {
+    await queryInterface.createTable('Asistencias', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      firstName: {
-        type: Sequelize.STRING
+      alumnoId: {
+        type: Sequelize.INTEGER
       },
-      lastName: {
-        type: Sequelize.STRING
+      profesorId: {
+        type: Sequelize.INTEGER
       },
-      address: {
-        type: Sequelize.STRING
-      },
-      telefono: {
-        type: Sequelize.STRING
-      },
-      userId: {
-        type: Sequelize.INTEGER,
-            allowNull: false,
+      materiaId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
-        type: Sequelize.DATE,
         allowNull: false,
+        type: Sequelize.DATE,
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
       },
-      updatedAt: {        
-        type: Sequelize.DATE,
+      updatedAt: {
         allowNull: false,
+        type: Sequelize.DATE,
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
-      },
+      }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('dataUsers');
+    await queryInterface.dropTable('Asistencias');
   }
 };

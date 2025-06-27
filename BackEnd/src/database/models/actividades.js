@@ -3,17 +3,10 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class actividades extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
+  class Actividades extends Model {
+    static associate(models) {}
   }
-  actividades.init({
+  Actividades.init({
     name: DataTypes.STRING,
     descripcion: DataTypes.TEXT,
     fechaInicio: DataTypes.DATE,
@@ -21,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     active: DataTypes.BOOLEAN
   }, {
     sequelize,
-    modelName: 'actividades',
+    modelName: 'Actividades',
   });
-  return actividades;
+  return Actividades;
 };

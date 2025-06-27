@@ -1,26 +1,27 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class secciones extends Model {
+  class Secciones extends Model {
     static associate(models) {
-     secciones.hasMany(models.seccionAlumnos, {
+      Secciones.hasMany(models.seccionAlumnos, {
         as: "seccion",
         foreignKey: "seccionId",
       });
-      secciones.hasOne(models.User, {
+      Secciones.hasOne(models.Users, {
         as: "profesor",
         foreignKey: "profesorId",
       });
     }
   }
-  secciones.init({
-    name: DataTypes.STRING,
-    profesorId: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'secciones',
-  });
-  return secciones;
+  Secciones.init(
+    {
+      name: DataTypes.STRING,
+      profesorId: DataTypes.INTEGER,
+    },
+    {
+      sequelize,
+      modelName: "Secciones",
+    }
+  );
+  return Secciones;
 };
