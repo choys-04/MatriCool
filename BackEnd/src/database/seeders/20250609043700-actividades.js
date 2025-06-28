@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('actividades', [{
+    await queryInterface.bulkInsert('Actividades', [{
       name: 'dia del padre',
       descripcion: "cafe con papas",
       fechaInicio: "2024-8-15",
@@ -17,6 +17,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-     await queryInterface.bulkDelete('People', null, {});
+     await queryInterface.bulkDelete('Actividades', null, {});
   }
 };

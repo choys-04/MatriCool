@@ -4,16 +4,16 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
 await queryInterface.bulkInsert('seccionAlumnos', [{
-        seccionId: '7-1',
+        seccionId: '1',
         alumnoId: '1'
       },{
-        seccionId: '8-1',
+        seccionId: '2',
         alumnoId: '2'
       },{
-        seccionId: '9-1',
+        seccionId: '3',
         alumnoId: '3'
       },{
-        seccionId: '10-1',
+        seccionId: '4',
         alumnoId: '4'
       }], {});
   },

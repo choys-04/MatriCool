@@ -3,22 +3,22 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-      await queryInterface.bulkInsert('Materia', [{
+      await queryInterface.bulkInsert('Materias', [{
         name: 'Ciencias',
-        descripcion: 'Ciencias Naturales',
+        description: 'Ciencias Naturales',
       },{
         name: 'Matematicas',
-        descripcion: 'Algebra',
+        description: 'Algebra',
       },{
         name: 'Quimica',
-        descripcion: 'Ciencias Naturales',
+        description: 'Ciencias Naturales',
       },{
         name: 'Estudios Sociales',
-        descripcion: 'Historia',
+        description: 'Historia',
       }], {});
   },
 
   async down (queryInterface, Sequelize) {
-     await queryInterface.bulkDelete('Materia', null, {});
+     await queryInterface.bulkDelete('Materias', null, {});
   }
 };

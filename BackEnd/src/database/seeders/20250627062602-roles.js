@@ -6,16 +6,16 @@ module.exports = {
     await queryInterface.bulkInsert('Roles', [
       {
        nombre: 'Alumno',
-       modulos: [1,2,3,4]
+       modulos: "[1,2,3,4]"
      },{
        nombre: 'Encargado',
-       modulos: [1,2,3,4]
+       modulos: "[1,2,3,4]"
      },{
        nombre: 'Admin1',
-       modulos: [1,2,3,4,5]
+       modulos: "[1,2,3,4,5]"
      },{
        nombre: 'Admin2',
-       modulos: [1,2,3,4,5,6]
+       modulos: "[1,2,3,4,5,6]"
      },
     ], {});
   },
