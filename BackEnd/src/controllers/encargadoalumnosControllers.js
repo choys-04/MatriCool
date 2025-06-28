@@ -1,9 +1,15 @@
-const { encargadoalumnos } = require("../database/models/index");
+const { encargadoalumnos, Users } = require("../database/models/index");
 
 const getAll = async (req, res) => {
   try {
     let data = await encargadoalumnos.findAll({
       attributes: { exclude: ["id"] },
+      include : [
+              {
+                model: Users,
+                attributes: { exclude: ["createdAt", "updatedAt"] },
+              },
+            ]
     });
     res.status(200).json(data);
   } catch (error) {
